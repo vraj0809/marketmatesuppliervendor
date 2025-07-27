@@ -284,7 +284,7 @@ const ProductList = () => {
                   className={`view-btn-productlist ${viewMode === 'list' ? 'active' : ''}`}
                   onClick={() => setViewMode('list')}
                 >
-                  <List className="icon" />
+                  <List className="icon"/>
                 </button>
               </div>
             </div>
@@ -414,14 +414,14 @@ const ProductList = () => {
                 }}
               >
                 <div className="product-image-container-productlist">
-                  <img
+                  {/* <img
                     src={product.image}
                     alt={product.name}
                     className="product-image-productlist"
                     onError={(e) => {
                       e.target.src = "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=400";
                     }}
-                  />
+                  /> */}
                   {product.badge && (
                     <div className={`product-badge-productlist ${product.badge.toLowerCase().replace(' ', '-')}`}>
                       {product.badge === 'Best Seller' && <Zap className="badge-icon" />}
@@ -491,7 +491,7 @@ const ProductList = () => {
                       </div>
                       {product.quantity > 0 && (
                         <div className="meta-item-productlist">
-                          <span style={{ color: '#10b981' }}>
+                          <span style={{ color: '#4e4e4e' }}>
                             {product.quantity} available
                           </span>
                         </div>
@@ -499,13 +499,13 @@ const ProductList = () => {
                     </div>
 
                     <div className="product-buttons-productlist">
-                      <button className="btn-productlist btn-secondary-productlist">
+                      {/* <button className="btn-productlist btn-secondary-productlist">
                         Get Quote
                       </button>
                       <button className="btn-productlist btn-primary-productlist">
                         <ShoppingCart className="icon" />
                         Add to Cart
-                      </button>
+                      </button> */}
                     </div>
                   </div>
                 </div>

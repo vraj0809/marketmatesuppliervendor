@@ -1,6 +1,6 @@
 /* DashboardOverview.css - Landing Page Theme */
 .dashboard-overview {
-  margin-left: 0%;
+  margin-left: 280px;
   padding: 2rem;
   background: #f9fafb;
   min-height: calc(100vh - 80px);
@@ -430,7 +430,6 @@
   background: #f3f4f6;
 }
 
-
 /* Responsive Design */
 @media (max-width: 1200px) {
   .charts-section {
@@ -439,7 +438,7 @@
   }
   
   .dashboard-overview {
-    margin-left: 0%;
+    margin-left: 260px;
     padding: 1.75rem;
   }
   
@@ -509,59 +508,64 @@
 
 @media (max-width: 480px) {
   .dashboard-overview {
-    background: #fffbe6 !important;
+    padding: 1rem;
   }
+  
+  .overview-title {
+    font-size: 1.5rem;
+  }
+  
+  .overview-subtitle {
+    font-size: 0.9rem;
+  }
+  
   .stat-card {
-    background: #ffe4e6 !important;
+    padding: 1.25rem;
+    border-radius: 12px;
   }
-  .dashboard-overview {
-    padding: 0.25rem;
-  }
-  .stats-grid {
-    gap: 0.5rem;
-    grid-template-columns: 1fr;
-  }
-  .stat-card {
-    padding: 0.5rem;
-    border-radius: 6px;
-    min-width: 0;
-  }
+  
   .stat-header {
-    margin-bottom: 0.25rem;
+    margin-bottom: 1rem;
   }
+  
+  .stat-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 1.1rem;
+  }
+  
   .stat-value {
+    font-size: 1.625rem;
+  }
+  
+  .stat-change {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.4rem;
+  }
+  
+  .chart-card,
+  .recent-activity {
+    padding: 1.25rem;
+    border-radius: 12px;
+  }
+  
+  .activity-item {
+    gap: 0.75rem;
+    padding: 0.875rem 0;
+  }
+  
+  .activity-icon {
+    width: 32px;
+    height: 32px;
     font-size: 1rem;
   }
-  .stat-title {
-    font-size: 0.7rem;
-  }
-  .stat-icon {
-    width: 22px;
-    height: 22px;
-    font-size: 0.7rem;
-  }
-  .stat-change {
-    font-size: 0.6rem;
-    padding: 0.05rem 0.1rem;
-  }
-  .chart-card, .recent-activity {
-    padding: 0.5rem;
-    border-radius: 6px;
-  }
-  .activity-item {
-    gap: 0.25rem;
-    padding: 0.25rem 0;
-  }
-  .activity-icon {
-    width: 18px;
-    height: 18px;
-    font-size: 0.6rem;
-  }
+  
   .activity-text {
-    font-size: 0.6rem;
+    font-size: 0.85rem;
   }
+  
   .activity-time {
-    font-size: 0.5rem;
+    font-size: 0.7rem;
   }
 }
 

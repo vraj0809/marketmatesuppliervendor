@@ -396,35 +396,6 @@
     padding: 12px 6px;
   }
 }
-@media (max-width: 480px) {
-  .ordermanagement-container {
-    padding: 2px 1px;
-  }
-  .ordermanagement-header h1 {
-    font-size: 1rem;
-  }
-  .ordermanagement-modal-content {
-    padding: 6px 2px;
-  }
-  .ordermanagement-queue-item {
-    flex-direction: column;
-    gap: 8px;
-    padding: 8px 6px;
-  }
-  .ordermanagement-toolbar {
-    flex-direction: column;
-    gap: 6px;
-  }
-  .ordermanagement-content {
-    gap: 8px;
-  }
-  .ordermanagement-bulk-panel,
-  .ordermanagement-scheduling-panel,
-  .ordermanagement-automation-panel,
-  .ordermanagement-notifications {
-    padding: 8px 2px;
-  }
-}
 
 /* Accessibility and High Contrast */
 .ordermanagement-high-contrast {

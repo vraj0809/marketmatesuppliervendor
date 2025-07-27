@@ -11,6 +11,7 @@
 }
 
 .dashboard__content {
+  margin-left:260px;
   flex: 1;
   padding: calc(var(--spacing) * 3);
   overflow-y: auto;
@@ -62,15 +63,11 @@
   margin: 0;
 }
 
-@media (min-width: 769px) {
-  .dashboard__content {
-    margin-left: 260px;
-  }
-}
 @media (max-width: 768px) {
   .dashboard__content {
-    margin-left: 0;
+    padding: calc(var(--spacing) * 2);
   }
+  
   .dashboard__stats {
     grid-template-columns: 1fr;
   }

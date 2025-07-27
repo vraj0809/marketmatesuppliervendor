@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
-import "../../styles/Dashboard/SupplierOrderManagement.css";
-
+import '../../styles/Dashboard/OrderManagement.css';
+import { io } from 'socket.io-client';
 
 // Add API base URL configuration
 const API_BASE_URL = 'http://localhost:5000'; // Your backend server URL
+const SOCKET_SERVER_URL = 'http://localhost:5000'; // Socket.IO server URL
 
 const OrderManagement = () => {
   const { user } = useContext(AuthContext);
@@ -16,6 +17,7 @@ const OrderManagement = () => {
   const [showProductModal, setShowProductModal] = useState(false);
   const [loading, setLoading] = useState(false);
   const [activeTab, setActiveTab] = useState('orders');
+  const [socket, setSocket] = useState(null);
 
   // Fetch vendor orders
   const fetchOrders = async () => {
@@ -177,9 +179,23 @@ const OrderManagement = () => {
       const data = await response.json();
       if (response.ok) {
         alert('Order request sent successfully!');
+        // Optimistically add the new order with status 'pending' to orders state
+        const newOrder = {
+          ...orderData,
+          _id: data.order?._id || `temp-${Date.now()}`, // Use backend returned id or temp id
+          status: 'pending',
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString(),
+          items: orderData.items,
+          orderNumber: orderData.orderNumber,
+          deliveryDate: null,
+          tracking: { statusHistory: [{ status: 'pending', timestamp: new Date().toISOString(), notes: 'Order created' }] },
+          vendorId: user._id
+        };
+        setOrders(prevOrders => [newOrder, ...prevOrders]);
         setSelectedProducts([]);
         setShowProductModal(false);
-        fetchOrders();
+        // Optionally fetchOrders() can be called later to sync with backend
       } else {
         alert(data.error || 'Failed to send order request');
       }
@@ -194,7 +210,37 @@ const OrderManagement = () => {
   useEffect(() => {
     fetchOrders();
     fetchSuppliers();
-  }, []);
+
+    if (user && user._id) {
+      const newSocket = io(SOCKET_SERVER_URL, {
+        withCredentials: true,
+        extraHeaders: {
+          "my-custom-header": "abcd"
+        }
+      });
+
+      newSocket.emit('joinRoom', user._id);
+
+      newSocket.on('orderStatusUpdated', (updatedOrder) => {
+        setOrders((prevOrders) => {
+          const index = prevOrders.findIndex(o => o._id === updatedOrder._id);
+          if (index !== -1) {
+            const newOrders = [...prevOrders];
+            newOrders[index] = updatedOrder;
+            return newOrders;
+          } else {
+            return [updatedOrder, ...prevOrders];
+          }
+        });
+      });
+
+      setSocket(newSocket);
+
+      return () => {
+        newSocket.disconnect();
+      };
+    }
+  }, [user]);
 
   // FIXED: Handle supplier selection with proper ID validation
   const handleSupplierSelect = (supplier) => {
@@ -257,10 +303,10 @@ const OrderManagement = () => {
   };
 
   return (
-    <div className="order-management">
-      <div className="order-header">
+    <div className="order-management-vendor">
+      <div className="order-header-vendor">
         <h2>Order Management</h2>
-        <div className="tab-buttons">
+        <div className="tab-buttons-vendor">
           <button 
             className={activeTab === 'orders' ? 'active' : ''}
             onClick={() => setActiveTab('orders')}
@@ -277,25 +323,24 @@ const OrderManagement = () => {
       </div>
 
       {activeTab === 'orders' && (
-        <div className="orders-list">
+        <div className="orders-list-vendor">
           {loading ? (
-            <div className="loading">Loading orders...</div>
+            <div className="loading-vendor">Loading orders...</div>
           ) : orders.length === 0 ? (
-            <div className="no-orders">No orders found</div>
+            <div className="no-orders-vendor">No orders found</div>
           ) : (
-            <div className="orders-grid">
+            <div className="orders-grid-vendor">
               {orders.map(order => (
-                <div key={order._id} className="order-card">
-                  <div className="order-header-info">
+                <div key={order._id} className="order-card-vendor">
+                  <div className="order-header-info-vendor">
                     <h3>Order #{order.orderNumber}</h3>
                     <span 
-                      className="order-status"
-                      style={{ backgroundColor: getStatusColor(order.status) }}
+                      className={`order-status-vendor ${order.status}`}
                     >
                       {getStatusText(order.status)}
                     </span>
                   </div>
-                  <div className="order-details">
+                  <div className="order-details-vendor">
                     <p><strong>Total:</strong> ₹{order.total}</p>
                     <p><strong>Items:</strong> {order.items?.length || 0}</p>
                     <p><strong>Created:</strong> {new Date(order.createdAt).toLocaleDateString()}</p>
@@ -303,10 +348,39 @@ const OrderManagement = () => {
                       <p><strong>Delivery:</strong> {new Date(order.deliveryDate).toLocaleDateString()}</p>
                     )}
                   </div>
-                  <div className="order-items">
+                  {/* Progress Timeline */}
+                  <div className="order-progress-timeline-vendor">
+                    {[
+                      'confirmed',
+                      'packaging',
+                      'ready',
+                      'on_the_way',
+                      'approach',
+                      'delivered'
+                    ].map((step, idx) => {
+                      const stepIndex = [
+                        'confirmed',
+                        'packaging',
+                        'ready',
+                        'on_the_way',
+                        'approach',
+                        'delivered'
+                      ].indexOf(order.status);
+                      const isCompleted = idx < stepIndex;
+                      const isCurrent = idx === stepIndex;
+                      return (
+                        <div key={step} className={`progress-step-vendor ${isCompleted ? 'completed' : ''} ${isCurrent ? 'current' : ''}`}>
+                          <div className="step-circle-vendor">{idx + 1}</div>
+                          <div className="step-label-vendor">{step.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase())}</div>
+                          {idx < 5 && <div className="step-bar-vendor" />}
+                        </div>
+                      );
+                    })}
+                  </div>
+                  <div className="order-items-vendor">
                     <h4>Items:</h4>
                     {order.items?.map((item, index) => (
-                      <div key={index} className="order-item">
+                      <div key={index} className="order-item-vendor">
                         <span>{item.name}</span>
                         <span>Qty: {item.quantity}</span>
                         <span>₹{item.price}</span>
@@ -321,31 +395,31 @@ const OrderManagement = () => {
       )}
 
       {activeTab === 'create' && (
-        <div className="create-order">
+        <div className="create-order-vendor">
           <h3>Select Supplier</h3>
           {loading ? (
-            <div className="loading">Loading suppliers...</div>
+            <div className="loading-vendor">Loading suppliers...</div>
           ) : suppliers.length === 0 ? (
-            <div className="no-orders">
+            <div className="no-orders-vendor">
               <p>No suppliers found in database.</p>
               <p>Please make sure suppliers are registered and active.</p>
             </div>
           ) : (
-            <div className="suppliers-grid">
+            <div className="suppliers-grid-vendor">
               {suppliers.map(supplier => (
                 <div 
                   key={supplier._id} 
-                  className="supplier-card"
+                  className="supplier-card-vendor"
                   onClick={() => handleSupplierSelect(supplier)}
                 >
-                  <div className="supplier-info">
+                  <div className="supplier-info-vendor">
                     <h4>{supplier.businessName || supplier.name}</h4>
                     <p>Trust Score: {supplier.trustScore || 0}/5</p>
                     <p>Location: {supplier.location?.city || 'N/A'}, {supplier.location?.state || 'N/A'}</p>
-                    {supplier.isVerified && <span className="verified-badge">✓ Verified</span>}
+                    {supplier.isVerified && <span className="verified-badge-vendor">✓ Verified</span>}
                     <p><small>ID: {supplier._id}</small></p>
                   </div>
-                  <button className="select-supplier-btn">
+                  <button className="select-supplier-btn-vendor">
                     Select Supplier
                   </button>
                 </div>
@@ -357,51 +431,51 @@ const OrderManagement = () => {
 
       {/* Product Selection Modal */}
       {showProductModal && (
-        <div className="modal-overlay">
-          <div className="modal-content">
-            <div className="modal-header">
+        <div className="modal-overlay-vendor">
+          <div className="modal-content-vendor">
+            <div className="modal-header-vendor">
               <h3>Select Products from {selectedSupplier?.businessName || selectedSupplier?.name}</h3>
               <button 
-                className="close-btn"
+                className="close-btn-vendor"
                 onClick={() => setShowProductModal(false)}
               >
                 ×
               </button>
             </div>
             
-            <div className="modal-body">
-              <div className="products-section">
+            <div className="modal-body-vendor">
+              <div className="products-section-vendor">
                 <h4>Available Products</h4>
                 {loading ? (
-                  <div className="loading">Loading products...</div>
+                  <div className="loading-vendor">Loading products...</div>
                 ) : supplierProducts.length === 0 ? (
-                  <div className="no-orders">
+                  <div className="no-orders-vendor">
                     <p>No products available from this supplier.</p>
                     <p>Supplier ID: {selectedSupplier?._id}</p>
                   </div>
                 ) : (
-                  <div className="products-grid">
+                  <div className="products-grid-vendor">
                     {supplierProducts.map(product => (
-                      <div key={product._id} className="product-card">
+                      <div key={product._id} className="product-card-vendor">
                         {/* Add product image */}
-                        <div className="product-image-container">
+                        <div className="product-image-container-vendor">
                           <img 
                             src={product.image || product.images?.[0] || "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=400"} 
                             alt={product.name}
-                            className="product-image"
+                            className="product-image-vendor"
                             onError={(e) => {
                               e.target.src = "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=400";
                             }}
                           />
                         </div>
-                        <div className="product-info">
+                        <div className="product-info-vendor">
                           <h5>{product.name}</h5>
-                          <p className="product-description">{product.description}</p>
-                          <p className="product-price">Price: ₹{product.price}/{product.unit}</p>
-                          <p className="product-stock">Stock: {product.stock || product.quantity || 0}</p>
+                          <p className="product-description-vendor">{product.description}</p>
+                          <p className="product-price-vendor">Price: ₹{product.price}/{product.unit}</p>
+                          <p className="product-stock-vendor">Stock: {product.stock || product.quantity || 0}</p>
                         </div>
                         <button 
-                          className="add-product-btn"
+                          className="add-product-btn-vendor"
                           onClick={() => handleProductSelect(product)}
                           disabled={selectedProducts.find(p => p._id === product._id)}
                         >
@@ -412,33 +486,33 @@ const OrderManagement = () => {
                   </div>
                 )}
               </div>
-
               {selectedProducts.length > 0 && (
-                <div className="selected-products">
+                <div className="selected-products-vendor">
                   <h4>Selected Products</h4>
-                  <div className="selected-products-list">
+                  <div className="selected-products-list-vendor">
                     {selectedProducts.map(product => (
-                      <div key={product._id} className="selected-product">
+                      <div key={product._id} className="selected-product-vendor">
                         <img 
                           src={product.image || product.images?.[0] || "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=400"} 
                           alt={product.name}
-                          className="selected-product-image"
+                          className="selected-product-image-vendor"
                           onError={(e) => {
                             e.target.src = "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=400";
                           }}
                         />
-                        <span className="selected-product-name">{product.name}</span>
+                        <span className="selected-product-name-vendor">{product.name}</span>
                         <input
                           type="number"
                           min="1"
                           max={product.stock || product.quantity || 999}
                           value={product.selectedQuantity}
                           onChange={(e) => handleQuantityChange(product._id, e.target.value)}
-                          className="quantity-input"
+                          className="quantity-input-vendor"
+                          // style={"color: #9b9b9b"}
                         />
-                        <span className="selected-product-total">₹{product.price * product.selectedQuantity}</span>
+                        <span className="selected-product-total-vendor">₹{product.price * product.selectedQuantity}</span>
                         <button 
-                          className="remove-btn"
+                          className="remove-btn-vendor"
                           onClick={() => removeProduct(product._id)}
                         >
                           Remove
@@ -446,7 +520,7 @@ const OrderManagement = () => {
                       </div>
                     ))}
                   </div>
-                  <div className="order-total">
+                  <div className="order-total-vendor">
                     <strong>
                       Total: ₹{selectedProducts.reduce((sum, p) => sum + (p.price * p.selectedQuantity), 0)}
                     </strong>
@@ -454,16 +528,15 @@ const OrderManagement = () => {
                 </div>
               )}
             </div>
-
-            <div className="modal-footer">
+            <div className="modal-footer-vendor">
               <button 
-                className="cancel-btn"
+                className="cancel-btn-vendor"
                 onClick={() => setShowProductModal(false)}
               >
                 Cancel
               </button>
               <button 
-                className="send-request-btn"
+                className="send-request-btn-vendor"
                 onClick={sendOrderRequest}
                 disabled={selectedProducts.length === 0 || loading}
               >

@@ -9,9 +9,9 @@ import styles from '../styles/VendorDashboard.module.css';
 import ProductList from './ProductList';
 import SearchSuppliers from './Dashboard/SearchSuppliers';
 
-// const Analytics = () => <div>Analytics</div>;
-// const Chat = () => <div>Communication Hub</div>;
-// const Notifications = () => <div>Notifications</div>;
+const Analytics = () => <div>Analytics</div>;
+const Chat = () => <div>Communication Hub</div>;
+const Notifications = () => <div>Notifications</div>;
 
 const VendorDashboard = () => {
   return (
@@ -21,7 +21,7 @@ const VendorDashboard = () => {
         <Sidebar />
         <main className={styles.dashboard__content}>
           <Routes>
-            <Route path="/" element={<Navigate to="dashboard" replace />} />
+            {/* <Route path="/" element={<Navigate to="dashboard" replace />} /> */}
             {/* <Route path="dashboard" element={<DashboardOverview />} /> */}
             <Route path="products" element={<ProductList />} />
             <Route path="suppliers" element={<SearchSuppliers />} />

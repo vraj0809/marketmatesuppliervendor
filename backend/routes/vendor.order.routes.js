@@ -35,44 +35,18 @@ router.use((req, res, next) => {
   next();
 });
 
-// Test route - no auth required
-router.get('/test', (req, res) => {
-  res.json({ 
-    success: true,
-    message: 'Vendor routes are working!', 
-    timestamp: new Date().toISOString(),
-    route: req.originalUrl,
-    method: req.method
-  });
-});
-
-// Debug info route - no auth required
-router.get('/debug/info', (req, res) => {
-  res.json({
-    success: true,
-    message: 'Vendor router debug info',
-    availableRoutes: [
-      'GET /api/vendor/test',
-      'GET /api/vendor/debug/info',
-      'GET /api/vendor/orders',
-      'GET /api/vendor/suppliers', 
-      'GET /api/vendor/suppliers/:supplierId/products',
-      'POST /api/vendor/orders/create'
-    ],
-    session: {
-      exists: !!req.session,
-      hasUser: !!req.session?.user,
-      userId: req.session?.user?._id
-    },
-    timestamp: new Date().toISOString()
-  });
-});
-
 // GET /api/vendor/orders - Get vendor's orders
 router.get('/orders', authenticateToken, async (req, res) => {
   try {
     const vendorId = req.user._id;
     console.log('Fetching orders for vendor:', vendorId);
+
+    // Log all orders for debugging
+    const allOrders = await Order.find({}).lean();
+    console.log(`Total orders in DB: ${allOrders.length}`);
+    allOrders.forEach((order, idx) => {
+      console.log(`Order ${idx + 1}: _id=${order._id}, vendorId=${order.vendorId}, status=${order.status}`);
+    });
     
     const orders = await Order.find({ vendorId })
       .populate('supplierId', 'name businessName location trustScore')
@@ -95,6 +69,8 @@ router.get('/orders', authenticateToken, async (req, res) => {
     });
   }
 });
+
+module.exports = router;
 
 // GET /api/vendor/suppliers - Get all suppliers from database
 router.get('/suppliers', authenticateToken, async (req, res) => {

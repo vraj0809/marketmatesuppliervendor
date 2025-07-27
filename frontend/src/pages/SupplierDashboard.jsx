@@ -47,14 +47,14 @@ const SupplierDashboard = () => {
         <Sidebar />
         <main className={styles.dashboard__content}>
           <Routes>
-            <Route path="/" element={<DashboardOverview />} />
-            <Route path="/dashboard" element={<DashboardOverview />} />
-            <Route path="/products" element={<SupplierProductCatalog />} />
+            {/* <Route path="/" element={<DashboardOverview />} />
+            <Route path="/dashboard" element={<DashboardOverview />} /> */}
+            <Route path="/dashboard" element={<SupplierProductCatalog />} />
             <Route path="/orders" element={<SupplierOrderManagement />} />
-            <Route path="/customers" element={<Customers />} />
+            {/* <Route path="/customers" element={<Customers />} />
             <Route path="/analytics" element={<Analytics />} />
             <Route path="/chat" element={<Chat />} />
-            <Route path="/trust-score" element={<TrustScore />} />
+            <Route path="/trust-score" element={<TrustScore />} /> */}
           </Routes>
         </main>
       </div>

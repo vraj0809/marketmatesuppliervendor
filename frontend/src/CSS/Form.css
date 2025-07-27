@@ -246,30 +246,6 @@
   }
 }
 
-@media (max-width: 480px) {
-  .form-container {
-    padding: 0.75rem;
-    margin: 0.5rem;
-    border-radius: 0.3rem;
-  }
-  .form-title {
-    font-size: 1rem;
-  }
-  .button-group {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  .btn {
-    width: 100%;
-    font-size: 0.95rem;
-    padding: 0.5rem 1rem;
-  }
-  .input-field, .textarea-field {
-    font-size: 0.95rem;
-    padding: 0.5rem 0.75rem;
-  }
-}
-
 /* Dark mode support */
 @media (prefers-color-scheme: dark) {
   .form-container {

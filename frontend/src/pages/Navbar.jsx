@@ -16,8 +16,10 @@ const Header = () => {
               <div className="logo-icon-landingpage">
                 <ShoppingCart className="icon-landingpage" />
               </div>
-              <span className="logo-text-landingpage">MARKETMATE</span>
-            </div>
+                <span className="logo-text-landingpage">
+                  <a href="/" style={{color: 'black', textDecoration: 'none'}}>MARKETMATE</a>
+                </span>
+              </div>
             
             <nav className="nav-landingpage">
               <a href="#" className="nav-link-landingpage">Buy</a>

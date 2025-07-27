@@ -5,6 +5,22 @@ const User = require('../models/User');
 const { authenticateToken } = require('../middleware/auth');
 const mongoose = require('mongoose');
 
+const { getIO } = require('../utils/socket');
+
+let io;
+
+function getSocketIO() {
+  if (!io) {
+    try {
+      io = getIO();
+    } catch (err) {
+      console.warn('Socket.io not initialized yet.');
+      io = null;
+    }
+  }
+  return io;
+}
+
 // GET /api/supplier/orders - Get supplier's orders
 router.get('/orders', authenticateToken, async (req, res) => {
   try {
@@ -25,6 +41,7 @@ router.get('/orders', authenticateToken, async (req, res) => {
       error: 'Failed to fetch orders', 
       details: error.message 
     });
+    
   }
 });
 
@@ -78,6 +95,9 @@ router.patch('/orders/:id/status', authenticateToken, async (req, res) => {
 
     await order.save();
 
+    // Emit order status update event to vendor room
+    getSocketIO()?.to(order.vendorId.toString()).emit("orderStatusUpdated", order);
+
     // Populate vendor information for response
     await order.populate('vendorId', 'name businessName location email phone');
 
@@ -88,6 +108,7 @@ router.patch('/orders/:id/status', authenticateToken, async (req, res) => {
     });
   } catch (error) {
     console.error('Error updating order status:', error);
+    console.error(error.stack);
     res.status(500).json({ 
       error: 'Failed to update order status', 
       details: error.message 
@@ -164,6 +185,9 @@ router.post('/orders/:id/approve', authenticateToken, async (req, res) => {
 
     await order.save();
 
+    // Emit order status update event to vendor room
+    getSocketIO()?.to(order.vendorId.toString()).emit("orderStatusUpdated", order);
+
     res.json({ 
       success: true, 
       message: 'Order approved successfully',
@@ -208,6 +232,9 @@ router.post('/orders/:id/reject', authenticateToken, async (req, res) => {
     });
 
     await order.save();
+
+    // Emit order status update event to vendor room
+    getSocketIO()?.to(order.vendorId.toString()).emit("orderStatusUpdated", order);
 
     res.json({ 
       success: true, 

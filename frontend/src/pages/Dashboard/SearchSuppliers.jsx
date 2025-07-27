@@ -246,7 +246,7 @@ function SearchSuppliers() {
             animationDelay: mounted ? `${idx * 100}ms` : '0ms',
           }}
         >
-          <div className="searchsupplier-logo">
+          {/* <div className="searchsupplier-logo">
             <img 
               src={supplier.logoUrl || '/default-avatar.png'} 
               alt="logo"
@@ -255,6 +255,7 @@ function SearchSuppliers() {
               }}
             />
           </div>
+           */}
           <div className="searchsupplier-company-name">
             {supplier.businessName}
           </div>

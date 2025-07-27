@@ -16,6 +16,7 @@
   flex: 1;
   padding: 24px;
   overflow-y: auto;
+  margin-left: 270px;
 }
 
 /* Dashboard Overview Container */
@@ -359,17 +360,6 @@
 @media (max-width: 1200px) {
   .info_grid_vendor_dashboard {
     grid-template-columns: 1fr;
-  }
-}
-
-@media (min-width: 769px) {
-  .dashboard__content {
-    margin-left: 260px;
-  }
-}
-@media (max-width: 768px) {
-  .dashboard__content {
-    margin-left: 0;
   }
 }
 

@@ -200,31 +200,4 @@
     right: 4px;
     bottom: 4px;
   }
-}
-
-@media (max-width: 480px) {
-  .supplierdashboard-container {
-    padding: 4px;
-  }
-  .supplierdashboard-section-title {
-    font-size: 0.95rem;
-  }
-  .supplierdashboard-metric-card,
-  .supplierdashboard-kpi-card,
-  .supplierdashboard-vendor-card,
-  .supplierdashboard-order-card,
-  .supplierdashboard-product-card,
-  .supplierdashboard-market-card {
-    padding: 6px;
-    min-width: 60px;
-    font-size: 0.9rem;
-  }
-  .supplierdashboard-product-img {
-    width: 40px;
-    height: 40px;
-  }
-  .supplierdashboard-quick-actions {
-    right: 2px;
-    bottom: 2px;
-  }
 } 

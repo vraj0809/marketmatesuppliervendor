@@ -42,38 +42,4 @@
 .sidebar__link:hover {
   background: var(--color-accent);
   color: var(--color-primary);
-}
-
-@media (max-width: 768px) {
-  .sidebar {
-    transform: translateX(-100%);
-    transition: transform 0.3s;
-    z-index: 1200;
-    position: fixed;
-    left: 0;
-    top: 0;
-    height: 100vh;
-    width: 260px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.18);
-    background: #fff;
-  }
-  .open {
-    transform: translateX(0);
-  }
-  .sidebar_toggle {
-    display: block;
-  }
-}
-@media (min-width: 769px) {
-  .sidebar_toggle {
-    display: none !important;
-  }
-  .sidebar {
-    transform: none !important;
-    position: fixed;
-    left: 0;
-    top: 0;
-    height: 100vh;
-    z-index: 900;
-  }
 } 

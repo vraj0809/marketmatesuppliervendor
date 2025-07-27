@@ -318,34 +318,3 @@
     flex-direction: column;
   }
 } 
-
-@media (max-width: 480px) {
-  .add-product-container {
-    padding: 0.5rem;
-  }
-  .add-product-form {
-    padding: 0.75rem;
-  }
-  .form-grid {
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
-  }
-  .variant-item {
-    grid-template-columns: 1fr;
-    gap: 0.25rem;
-    padding: 0.5rem;
-  }
-  .form-actions {
-    flex-direction: column;
-    gap: 0.5rem;
-    padding-top: 1rem;
-    margin-top: 1rem;
-  }
-  .form-label {
-    font-size: 0.9rem;
-  }
-  .form-input, .form-select, .form-textarea {
-    font-size: 0.95rem;
-    padding: 0.5rem 0.75rem;
-  }
-} 

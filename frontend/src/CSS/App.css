@@ -574,53 +574,6 @@ button:disabled {
   .lg\:flex-row { flex-direction: row; }
 }
 
-/* Enhanced Responsive Design */
-@media (max-width: 1024px) {
-  .max-w-7xl { max-width: 95vw; }
-  .App { padding: 1.5rem; }
-}
-@media (max-width: 768px) {
-  .App { padding: 1rem; }
-  .max-w-7xl, .max-w-4xl, .max-w-3xl, .max-w-2xl, .max-w-md {
-    max-width: 100vw;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-  }
-  .flex, .md\:flex, .lg\:flex-row {
-    flex-direction: column !important;
-    align-items: stretch !important;
-  }
-  .grid, .md\:grid-cols-2, .md\:grid-cols-4, .lg\:grid-cols-3, .lg\:grid-cols-4 {
-    grid-template-columns: 1fr !important;
-  }
-  .p-4, .p-6, .p-8, .p-12 {
-    padding: 0.5rem !important;
-  }
-  .py-8, .py-20 {
-    padding-top: 1rem !important;
-    padding-bottom: 1rem !important;
-  }
-  .px-8, .px-10 {
-    padding-left: 0.5rem !important;
-    padding-right: 0.5rem !important;
-  }
-  .rounded-xl, .rounded-2xl, .rounded-3xl {
-    border-radius: 0.5rem !important;
-  }
-}
-@media (max-width: 480px) {
-  .App { padding: 0.5rem; }
-  .text-4xl, .text-5xl, .text-6xl, .text-7xl {
-    font-size: 1.5rem !important;
-  }
-  .p-4, .p-6, .p-8, .p-12 {
-    padding: 0.25rem !important;
-  }
-  .rounded-xl, .rounded-2xl, .rounded-3xl {
-    border-radius: 0.25rem !important;
-  }
-}
-
 /* Custom Styles for React Components */
 .App {
   text-align: center;
