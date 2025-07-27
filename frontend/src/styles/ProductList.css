@@ -1,0 +1,31 @@
+/* ProductList custom styles */
+.container-productlist{
+  margin-left: 0%;
+}
+
+.product-list-bg {
+  background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 100%);
+}
+
+.product-card {
+  box-shadow: 0 4px 24px 0 rgba(80, 80, 180, 0.08), 0 1.5px 4px 0 rgba(80, 80, 180, 0.04);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.product-card:hover {
+  box-shadow: 0 8px 32px 0 rgba(80, 80, 180, 0.16), 0 3px 8px 0 rgba(80, 80, 180, 0.08);
+  transform: translateY(-4px) scale(1.03);
+}
+
+.product-card input,
+.product-card textarea {
+  font-size: 1rem;
+  background: #f8fafc;
+  border: 1px solid #c7d2fe;
+  margin-bottom: 0.5rem;
+}
+
+.product-card button {
+  font-weight: 500;
+  letter-spacing: 0.02em;
+} 

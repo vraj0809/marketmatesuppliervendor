@@ -1,0 +1,410 @@
+/* Main Dashboard Layout */
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #f8f9fa;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.dashboard__main {
+  display: flex;
+  flex: 1;
+}
+
+.dashboard__content {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+}
+
+/* Dashboard Overview Container */
+.dashboard_overview_vendor_dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Revenue Header */
+.revenue_header_vendor_dashboard {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.revenue_info_vendor_dashboard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.revenue_label_vendor_dashboard {
+  font-size: 18px;
+  font-weight: 600;
+  color: #4b5563;
+}
+
+.revenue_amount_vendor_dashboard {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.revenue_changes_vendor_dashboard {
+  display: flex;
+  gap: 12px;
+}
+
+.revenue_decrease_vendor_dashboard {
+  color: #dc2626;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.revenue_increase_vendor_dashboard {
+  color: #16a34a;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Status Cards */
+.status_cards_vendor_dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.status_card_vendor_dashboard {
+  padding: 24px;
+  border-radius: 16px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card_blue_vendor_dashboard {
+  background: linear-gradient(135deg, #60a5fa, #2563eb);
+}
+
+.card_pink_vendor_dashboard {
+  background: linear-gradient(135deg, #f472b6, #dc2626);
+}
+
+.card_purple_vendor_dashboard {
+  background: linear-gradient(135deg, #a855f7, #7c3aed);
+}
+
+.card_green_vendor_dashboard {
+  background: linear-gradient(135deg, #34d399, #10b981);
+}
+
+.card_decoration_vendor_dashboard {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+}
+
+.card_title_vendor_dashboard {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.card_number_vendor_dashboard {
+  font-size: 36px;
+  font-weight: 700;
+  margin: 8px 0;
+}
+
+.card_subtitle_vendor_dashboard {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* Info Grid */
+.info_grid_vendor_dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.info_card_vendor_dashboard {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.card_header_vendor_dashboard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.card_heading_vendor_dashboard {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+}
+
+.card_subtext_vendor_dashboard {
+  font-size: 14px;
+  color: #6b7280;
+  margin: 4px 0 0 0;
+}
+
+.view_details_btn_vendor_dashboard,
+.view_all_btn_vendor_dashboard {
+  color: #2563eb;
+  font-size: 14px;
+  font-weight: 500;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.view_details_btn_vendor_dashboard:hover,
+.view_all_btn_vendor_dashboard:hover {
+  text-decoration: underline;
+}
+
+/* Inbox Messages */
+.inbox_messages_vendor_dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.inbox_message_vendor_dashboard {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 12px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.inbox_message_vendor_dashboard:last-child {
+  border-bottom: none;
+}
+
+.message_content_vendor_dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.message_text_vendor_dashboard {
+  color: #4b5563;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.message_group_vendor_dashboard {
+  color: #9ca3af;
+  font-size: 12px;
+}
+
+.message_time_vendor_dashboard {
+  color: #9ca3af;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Activity List */
+.activity_list_vendor_dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.activity_item_vendor_dashboard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.activity_item_vendor_dashboard:last-child {
+  border-bottom: none;
+}
+
+.activity_info_vendor_dashboard {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.activity_icon_vendor_dashboard {
+  font-size: 16px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.activity_details_vendor_dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.activity_text_vendor_dashboard {
+  color: #4b5563;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.activity_time_vendor_dashboard {
+  color: #9ca3af;
+  font-size: 12px;
+}
+
+.status_badge_vendor_dashboard {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status_urgent_vendor_dashboard {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.status_new_vendor_dashboard {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.status_default_vendor_dashboard {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+/* Trend Tabs */
+.trend_tabs_vendor_dashboard {
+  display: flex;
+  gap: 8px;
+}
+
+.trend_tab_vendor_dashboard,
+.trend_tab_active_vendor_dashboard {
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.trend_tab_active_vendor_dashboard {
+  color: #2563eb;
+  background: #eff6ff;
+}
+
+.trend_tab_vendor_dashboard {
+  color: #9ca3af;
+}
+
+.trend_tab_vendor_dashboard:hover {
+  background: #f9fafb;
+}
+
+/* Chart */
+.chart_container_vendor_dashboard {
+  height: 100px;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  position: relative;
+}
+
+.chart_svg_vendor_dashboard {
+  color: #2563eb;
+}
+
+.chart_label_vendor_dashboard {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  font-weight: 600;
+  color: #1f2937;
+  background: #ffffff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .info_grid_vendor_dashboard {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 769px) {
+  .dashboard__content {
+    margin-left: 260px;
+  }
+}
+@media (max-width: 768px) {
+  .dashboard__content {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .status_cards_vendor_dashboard {
+    grid-template-columns: 1fr;
+  }
+  
+  .revenue_info_vendor_dashboard {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .revenue_amount_vendor_dashboard {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard_overview_vendor_dashboard {
+    gap: 16px;
+  }
+  
+  .revenue_header_vendor_dashboard,
+  .info_card_vendor_dashboard {
+    padding: 16px;
+  }
+  
+  .status_card_vendor_dashboard {
+    padding: 20px;
+    min-height: 120px;
+  }
+  
+  .card_number_vendor_dashboard {
+    font-size: 28px;
+  }
+}

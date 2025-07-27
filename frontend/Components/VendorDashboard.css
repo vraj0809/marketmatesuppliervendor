@@ -1,0 +1,118 @@
+.container-vendor-dashboard {
+  display: flex;
+  min-height: 100vh;
+  background: #f8f9fa;
+}
+.header-vendor-dashboard {
+  width: 100%;
+  background: #2d3e50;
+  color: #fff;
+  padding: 1.5rem;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+}
+.sidebar-vendor-dashboard {
+  width: 220px;
+  background: #34495e;
+  color: #fff;
+  padding: 2rem 1rem;
+  min-height: 100vh;
+}
+.main-vendor-dashboard {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.overview-vendor-dashboard, .raw-materials-vendor-dashboard, .search-suppliers-vendor-dashboard, .compare-prices-vendor-dashboard, .place-order-vendor-dashboard, .order-history-vendor-dashboard, .order-status-vendor-dashboard, .chat-vendor-dashboard, .group-buy-vendor-dashboard, .notifications-vendor-dashboard {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  padding: 1.5rem;
+}
+.btn-vendor-dashboard {
+  background: #2d3e50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+.btn-vendor-dashboard:hover {
+  background: #1a232e;
+}
+.title-vendor-dashboard {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.cards-vendor-dashboard {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.card-vendor-dashboard {
+  background: #eaf0f6;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  font-size: 1.1rem;
+}
+.table-vendor-dashboard {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+.table-vendor-dashboard th, .table-vendor-dashboard td {
+  border: 1px solid #e0e0e0;
+  padding: 0.5rem 1rem;
+  text-align: left;
+}
+.form-vendor-dashboard {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.input-vendor-dashboard {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+.timeline-vendor-dashboard {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.timeline-step-vendor-dashboard {
+  background: #d1e7dd;
+  color: #1a232e;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.95rem;
+}
+.chatbox-vendor-dashboard {
+  background: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1rem;
+  min-height: 60px;
+  color: #888;
+}
+.notifications-list-vendor-dashboard {
+  list-style: none;
+  padding: 0;
+}
+.notification-vendor-dashboard {
+  background: #fff3cd;
+  color: #856404;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.5rem;
+} 

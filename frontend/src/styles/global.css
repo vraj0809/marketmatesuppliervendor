@@ -1,0 +1,93 @@
+/* Global Styles & Theme Variables */
+:root {
+  --color-primary: #2a4365;
+  --color-secondary: #38b2ac;
+  --color-accent: #f6ad55;
+  --color-neutral: #f7fafc;
+  --color-bg: #ffffff;
+  --color-text: #22223b;
+  --color-success: #38a169;
+  --color-danger: #e53e3e;
+  --color-warning: #ecc94b;
+  --color-info: #3182ce;
+  --font-main: 'Inter', Arial, sans-serif;
+  --spacing: 8px;
+  --shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-main);
+  background: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  margin: 0 0 var(--spacing) 0;
+}
+
+p {
+  margin: 0 0 var(--spacing) 0;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: var(--color-primary);
+  color: #fff;
+  padding: calc(var(--spacing) * 1.5) calc(var(--spacing) * 3);
+  border-radius: 4px;
+  box-shadow: var(--shadow);
+  transition: background 0.2s;
+}
+
+button:hover {
+  background: var(--color-secondary);
+}
+
+input, select, textarea {
+  font-family: inherit;
+  padding: calc(var(--spacing) * 1.25);
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  margin-bottom: var(--spacing);
+  background: #fff;
+  color: var(--color-text);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+/* Utility Classes */
+.u-flex {
+  display: flex;
+}
+.u-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.u-mb {
+  margin-bottom: var(--spacing);
+}
+.u-mt {
+  margin-top: var(--spacing);
+}
+.u-shadow {
+  box-shadow: var(--shadow);
+} 

@@ -1,0 +1,107 @@
+/* Login Page Styles */
+
+.container-login {
+  max-width: 400px;
+  margin: 5rem auto;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #1e293b;
+}
+
+h2.login-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #0f172a;
+}
+
+.form-group-login {
+  margin-bottom: 1.25rem;
+}
+
+.label-login {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.input-login {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  color: #1e293b;
+  transition: border-color 0.3s ease;
+  background: white;
+}
+
+.input-login:focus {
+  border-color: #64748b;
+  outline: none;
+}
+
+.form-options-login {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: #475569;
+}
+
+.form-options-login label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+}
+
+.forgot-link-login {
+  color: #475569;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.forgot-link-login:hover {
+  color: #334155;
+}
+
+.btn-login {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(135deg, #475569 0%, #64748b 100%);
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn-login:hover {
+  background: linear-gradient(135deg, #334155 0%, #475569 100%);
+}
+
+.signup-prompt-login {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: #475569;
+}
+
+.signup-link-login {
+  color: #334155;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.signup-link-login:hover {
+  color: #1e293b;
+}

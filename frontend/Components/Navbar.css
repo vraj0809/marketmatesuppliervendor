@@ -1,0 +1,57 @@
+.header-landingpage {
+  position: relative;
+  z-index: 50;
+  padding: 1.5rem 0;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.header-content-landingpage {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-landingpage {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo-icon-landingpage {
+  width: 2rem;
+  height: 2rem;
+  background: linear-gradient(135deg, #475569 0%, #64748b 100%);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-text-landingpage {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.nav-landingpage {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-link-landingpage {
+  color: #475569;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: 500;
+}
+
+.nav-link-landingpage:hover {
+  color: #1e293b;
+}
+
+.auth-buttons-landingpage {
+  display: flex;
+  gap: 1rem;
+}

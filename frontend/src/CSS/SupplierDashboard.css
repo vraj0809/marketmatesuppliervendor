@@ -1,0 +1,230 @@
+:root {
+  --supplierdashboard-primary: #4caf50;
+  --supplierdashboard-bg: #f9f9fb;
+  --supplierdashboard-card-bg: #fff;
+  --supplierdashboard-border: #e0e0e0;
+  --supplierdashboard-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  --supplierdashboard-radius: 12px;
+  --supplierdashboard-spacing: 16px;
+  --supplierdashboard-font-main: 'Inter', Arial, sans-serif;
+}
+
+.supplierdashboard-container {
+  font-family: var(--supplierdashboard-font-main);
+  background: var(--supplierdashboard-bg);
+  min-height: 100vh;
+  padding: var(--supplierdashboard-spacing);
+}
+
+.supplierdashboard-section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: var(--supplierdashboard-spacing);
+}
+
+.supplierdashboard-revenue-cards,
+.supplierdashboard-kpi-cards,
+.supplierdashboard-vendor-cards {
+  display: flex;
+  gap: var(--supplierdashboard-spacing);
+  margin-bottom: var(--supplierdashboard-spacing);
+}
+
+.supplierdashboard-metric-card,
+.supplierdashboard-kpi-card,
+.supplierdashboard-vendor-card {
+  background: var(--supplierdashboard-card-bg);
+  border-radius: var(--supplierdashboard-radius);
+  box-shadow: var(--supplierdashboard-shadow);
+  padding: 20px 28px;
+  min-width: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border: 1px solid var(--supplierdashboard-border);
+}
+
+.supplierdashboard-metric-label,
+.supplierdashboard-kpi-label {
+  font-size: 1rem;
+  color: #888;
+  margin-bottom: 4px;
+}
+
+.supplierdashboard-metric-value,
+.supplierdashboard-kpi-value {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--supplierdashboard-primary);
+}
+
+.supplierdashboard-orders-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--supplierdashboard-spacing);
+  margin-bottom: var(--supplierdashboard-spacing);
+}
+
+.supplierdashboard-order-card {
+  background: var(--supplierdashboard-card-bg);
+  border-radius: var(--supplierdashboard-radius);
+  box-shadow: var(--supplierdashboard-shadow);
+  padding: 16px;
+  text-align: center;
+  border: 1px solid var(--supplierdashboard-border);
+}
+
+.supplierdashboard-products-list {
+  display: flex;
+  gap: var(--supplierdashboard-spacing);
+  overflow-x: auto;
+  margin-bottom: var(--supplierdashboard-spacing);
+}
+
+.supplierdashboard-product-card {
+  background: var(--supplierdashboard-card-bg);
+  border-radius: var(--supplierdashboard-radius);
+  box-shadow: var(--supplierdashboard-shadow);
+  padding: 12px;
+  min-width: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid var(--supplierdashboard-border);
+}
+
+.supplierdashboard-product-img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.supplierdashboard-product-info {
+  text-align: center;
+}
+
+.supplierdashboard-product-name {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.supplierdashboard-product-sold,
+.supplierdashboard-product-revenue {
+  font-size: 0.95rem;
+  color: #666;
+}
+
+.supplierdashboard-market-list {
+  display: flex;
+  gap: var(--supplierdashboard-spacing);
+  flex-wrap: wrap;
+}
+
+.supplierdashboard-market-card {
+  background: var(--supplierdashboard-card-bg);
+  border-radius: var(--supplierdashboard-radius);
+  box-shadow: var(--supplierdashboard-shadow);
+  padding: 16px;
+  min-width: 120px;
+  text-align: center;
+  border: 1px solid var(--supplierdashboard-border);
+}
+
+.supplierdashboard-quick-actions {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 1000;
+}
+
+.supplierdashboard-action-btn {
+  background: var(--supplierdashboard-primary);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: var(--supplierdashboard-shadow);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.supplierdashboard-action-btn:hover {
+  background: #388e3c;
+}
+
+.supplierdashboard-loading,
+.supplierdashboard-error {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 40px;
+}
+
+@media (max-width: 1024px) {
+  .supplierdashboard-revenue-cards,
+  .supplierdashboard-kpi-cards,
+  .supplierdashboard-vendor-cards,
+  .supplierdashboard-products-list,
+  .supplierdashboard-market-list {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .supplierdashboard-quick-actions {
+    right: 12px;
+    bottom: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .supplierdashboard-container {
+    padding: 8px;
+  }
+  .supplierdashboard-section-title {
+    font-size: 1.1rem;
+  }
+  .supplierdashboard-metric-card,
+  .supplierdashboard-kpi-card,
+  .supplierdashboard-vendor-card,
+  .supplierdashboard-order-card,
+  .supplierdashboard-product-card,
+  .supplierdashboard-market-card {
+    padding: 10px;
+    min-width: 100px;
+  }
+  .supplierdashboard-quick-actions {
+    right: 4px;
+    bottom: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .supplierdashboard-container {
+    padding: 4px;
+  }
+  .supplierdashboard-section-title {
+    font-size: 0.95rem;
+  }
+  .supplierdashboard-metric-card,
+  .supplierdashboard-kpi-card,
+  .supplierdashboard-vendor-card,
+  .supplierdashboard-order-card,
+  .supplierdashboard-product-card,
+  .supplierdashboard-market-card {
+    padding: 6px;
+    min-width: 60px;
+    font-size: 0.9rem;
+  }
+  .supplierdashboard-product-img {
+    width: 40px;
+    height: 40px;
+  }
+  .supplierdashboard-quick-actions {
+    right: 2px;
+    bottom: 2px;
+  }
+} 

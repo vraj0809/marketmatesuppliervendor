@@ -1,0 +1,562 @@
+/* Main Container */
+.ordermanagement-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 16px;
+  background: #f8f9fb;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #222;
+}
+.ordermanagement-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+.ordermanagement-header h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #2a3a4b;
+}
+.ordermanagement-toolbar {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.ordermanagement-content {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 32px;
+}
+
+/* Queue and List Styling */
+.ordermanagement-queue-container {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  padding: 24px;
+  max-height: 70vh;
+  overflow-y: auto;
+  transition: box-shadow 0.2s;
+}
+.ordermanagement-queue-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+.ordermanagement-queue-item {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: #f4f6fa;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  padding: 14px 18px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  transition: background 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+.ordermanagement-queue-item.selected {
+  background: #e3f0ff;
+  box-shadow: 0 2px 8px rgba(0,123,255,0.08);
+}
+.ordermanagement-queue-item:hover {
+  background: #eaf2fb;
+}
+.ordermanagement-order-number {
+  font-weight: 600;
+  color: #2a3a4b;
+  min-width: 120px;
+}
+.ordermanagement-customer-info {
+  color: #4b5c6b;
+  min-width: 120px;
+}
+.ordermanagement-order-value {
+  color: #1a7f37;
+  font-weight: 500;
+  min-width: 120px;
+}
+.ordermanagement-priority-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  min-width: 60px;
+  text-align: center;
+}
+.ordermanagement-priority-badge[style*="red"] { background: #e74c3c; }
+.ordermanagement-priority-badge[style*="orange"] { background: #f39c12; }
+.ordermanagement-priority-badge[style*="green"] { background: #27ae60; }
+.ordermanagement-status-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  background: #e3e7ed;
+  color: #2a3a4b;
+}
+.ordermanagement-quick-actions button,
+.ordermanagement-expand-toggle button {
+  background: #fff;
+  border: 1px solid #bfc9d8;
+  border-radius: 8px;
+  padding: 4px 12px;
+  margin-left: 6px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s, border 0.2s;
+}
+.ordermanagement-quick-actions button:hover,
+.ordermanagement-expand-toggle button:hover {
+  background: #e3f0ff;
+  border-color: #007bff;
+}
+.ordermanagement-select-checkbox,
+.ordermanagement-select-all {
+  accent-color: #007bff;
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+}
+
+/* Modal and Detail Views */
+.ordermanagement-details-modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(30,40,60,0.25);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.2s, modalPop 0.3s;
+}
+@keyframes fadeIn {
+  from { opacity: 0; } to { opacity: 1; }
+}
+@keyframes modalPop {
+  from { transform: scale(0.95); opacity: 0.7; }
+  to { transform: scale(1); opacity: 1; }
+}
+.ordermanagement-modal-content {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+  padding: 32px 36px;
+  max-width: 700px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  font-size: 1.05rem;
+}
+.ordermanagement-modal-content h2, .ordermanagement-modal-content h3, .ordermanagement-modal-content h4 {
+  margin-top: 0;
+}
+.ordermanagement-timeline ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.ordermanagement-timeline li {
+  position: relative;
+  padding-left: 18px;
+  margin-bottom: 8px;
+}
+.ordermanagement-timeline li:before {
+  content: '';
+  position: absolute;
+  left: 0; top: 7px;
+  width: 8px; height: 8px;
+  background: #007bff;
+  border-radius: 50%;
+}
+.ordermanagement-product-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.ordermanagement-product-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 0;
+  border-bottom: 1px solid #e3e7ed;
+}
+.ordermanagement-inventory-status {
+  margin-left: auto;
+  font-size: 0.95rem;
+  color: #007bff;
+}
+
+/* Bulk Operations */
+.ordermanagement-bulk-panel {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  padding: 18px 20px;
+  margin-bottom: 18px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.btn-ordermanagement-bulk-accept,
+.btn-ordermanagement-bulk-reject,
+.btn-ordermanagement-bulk-schedule,
+.btn-ordermanagement-bulk-export,
+.btn-ordermanagement-bulk-assign,
+.btn-ordermanagement-bulk-priority {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 7px 18px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+.btn-ordermanagement-bulk-accept:hover { background: #1a7f37; }
+.btn-ordermanagement-bulk-reject:hover { background: #e74c3c; }
+.btn-ordermanagement-bulk-schedule:hover { background: #f39c12; }
+.btn-ordermanagement-bulk-export:hover { background: #34495e; }
+.btn-ordermanagement-bulk-assign:hover { background: #8e44ad; }
+.btn-ordermanagement-bulk-priority:hover { background: #007bff; }
+.ordermanagement-bulk-confirmation {
+  background: #f8f9fb;
+  border: 1.5px solid #007bff;
+  border-radius: 10px;
+  padding: 18px 20px;
+  margin-top: 12px;
+  box-shadow: 0 1px 8px rgba(0,123,255,0.08);
+}
+.ordermanagement-bulk-confirmation input[type="text"],
+.ordermanagement-bulk-confirmation input[type="date"] {
+  margin: 8px 0;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #bfc9d8;
+  font-size: 1rem;
+}
+.ordermanagement-bulk-confirmation button {
+  margin-right: 10px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 16px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.ordermanagement-bulk-confirmation button:hover {
+  background: #0056b3;
+}
+
+/* Scheduling and Capacity Planning */
+.ordermanagement-scheduling-panel {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  padding: 18px 20px;
+  margin-bottom: 18px;
+}
+.ordermanagement-capacity-dashboard {
+  margin-top: 12px;
+}
+.ordermanagement-date-picker {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #bfc9d8;
+  font-size: 1rem;
+}
+
+/* Order Modification */
+.ordermanagement-modification-panel {
+  margin-top: 18px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.ordermanagement-modification-panel select,
+.ordermanagement-modification-panel input[type="text"] {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #bfc9d8;
+  font-size: 1rem;
+}
+.ordermanagement-modification-panel button {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 16px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.ordermanagement-modification-panel button:hover {
+  background: #0056b3;
+}
+
+/* Automation Rules */
+.ordermanagement-automation-panel {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  padding: 18px 20px;
+  margin-bottom: 18px;
+}
+.ordermanagement-rule-builder {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.ordermanagement-rule-builder input[type="text"],
+.ordermanagement-rule-builder input[type="number"] {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #bfc9d8;
+  font-size: 1rem;
+}
+.ordermanagement-rule-builder button {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 16px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.ordermanagement-rule-builder button:hover {
+  background: #0056b3;
+}
+
+/* Notifications */
+.ordermanagement-notifications {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  padding: 18px 20px;
+  margin-bottom: 18px;
+  min-height: 80px;
+}
+
+/* General Button Styling */
+.btn-ordermanagement {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 7px 18px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+.btn-ordermanagement:hover {
+  background: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .ordermanagement-content {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .ordermanagement-queue-container,
+  .ordermanagement-scheduling-panel,
+  .ordermanagement-automation-panel,
+  .ordermanagement-notifications {
+    max-width: 100%;
+    padding: 14px 8px;
+  }
+}
+@media (max-width: 600px) {
+  .ordermanagement-container {
+    padding: 8px 2px;
+  }
+  .ordermanagement-header h1 {
+    font-size: 1.3rem;
+  }
+  .ordermanagement-modal-content {
+    padding: 12px 6px;
+  }
+}
+@media (max-width: 480px) {
+  .ordermanagement-container {
+    padding: 2px 1px;
+  }
+  .ordermanagement-header h1 {
+    font-size: 1rem;
+  }
+  .ordermanagement-modal-content {
+    padding: 6px 2px;
+  }
+  .ordermanagement-queue-item {
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px 6px;
+  }
+  .ordermanagement-toolbar {
+    flex-direction: column;
+    gap: 6px;
+  }
+  .ordermanagement-content {
+    gap: 8px;
+  }
+  .ordermanagement-bulk-panel,
+  .ordermanagement-scheduling-panel,
+  .ordermanagement-automation-panel,
+  .ordermanagement-notifications {
+    padding: 8px 2px;
+  }
+}
+
+/* Accessibility and High Contrast */
+.ordermanagement-high-contrast {
+  background: #000 !important;
+  color: #fff !important;
+}
+.ordermanagement-high-contrast .ordermanagement-queue-item,
+.ordermanagement-high-contrast .ordermanagement-modal-content {
+  background: #222 !important;
+  color: #fff !important;
+}
+.ordermanagement-high-contrast .btn-ordermanagement,
+.ordermanagement-high-contrast .btn-ordermanagement-bulk-accept,
+.ordermanagement-high-contrast .btn-ordermanagement-bulk-reject {
+  background: #fff !important;
+  color: #000 !important;
+}
+
+/* Error and Loading States */
+.ordermanagement-error {
+  color: #e74c3c;
+  background: #fff0f0;
+  border: 1px solid #e74c3c;
+  border-radius: 8px;
+  padding: 8px 14px;
+  margin: 10px 0;
+}
+.ordermanagement-loading {
+  color: #007bff;
+  font-weight: 600;
+  margin: 10px 0;
+}
+
+/* Custom Icons (using emoji for demo) */
+.ordermanagement-order-number:before {
+  content: '📦 ';
+  margin-right: 4px;
+}
+.ordermanagement-customer-info:before {
+  content: '👤 ';
+  margin-right: 2px;
+}
+.ordermanagement-order-value:before {
+  content: '💲 ';
+  margin-right: 2px;
+}
+.ordermanagement-priority-badge[style*="red"]:before {
+  content: '⚡ ';
+}
+.ordermanagement-priority-badge[style*="orange"]:before {
+  content: '⏰ ';
+}
+.ordermanagement-priority-badge[style*="green"]:before {
+  content: '✅ ';
+}
+.ordermanagement-quick-actions button:before {
+  content: '🔍 ';
+  margin-right: 2px;
+}
+.btn-ordermanagement-bulk-accept:before { content: '✔️ '; }
+.btn-ordermanagement-bulk-reject:before { content: '❌ '; }
+.btn-ordermanagement-bulk-schedule:before { content: '📅 '; }
+.btn-ordermanagement-bulk-export:before { content: '⬇️ '; }
+.btn-ordermanagement-bulk-assign:before { content: '👥 '; }
+.btn-ordermanagement-bulk-priority:before { content: '⭐ '; }
+
+/* Focus Outlines for Accessibility */
+.ordermanagement-queue-item:focus,
+.ordermanagement-queue-item.selected:focus,
+.btn-ordermanagement:focus,
+.btn-ordermanagement-bulk-accept:focus,
+.btn-ordermanagement-bulk-reject:focus,
+.btn-ordermanagement-bulk-schedule:focus,
+.btn-ordermanagement-bulk-export:focus,
+.btn-ordermanagement-bulk-assign:focus,
+.btn-ordermanagement-bulk-priority:focus {
+  outline: 2.5px solid #007bff;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px #e3f0ff;
+}
+
+/* Sound Alert (for notification) */
+.ordermanagement-notification-sound {
+  animation: notificationPulse 0.7s;
+  background: #fffbe6 !important;
+  color: #e67e22 !important;
+}
+@keyframes notificationPulse {
+  0% { box-shadow: 0 0 0 0 #f39c12; }
+  70% { box-shadow: 0 0 0 10px #f39c1200; }
+  100% { box-shadow: 0 0 0 0 #f39c1200; }
+}
+
+/* Analytics Panel */
+.ordermanagement-analytics-panel {
+  background: linear-gradient(90deg, #e3f0ff 0%, #f8f9fb 100%);
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,123,255,0.07);
+  padding: 24px 28px;
+  margin-bottom: 24px;
+  color: #2a3a4b;
+  font-size: 1.1rem;
+}
+.ordermanagement-analytics-panel h3 {
+  color: #007bff;
+  margin-top: 0;
+}
+
+/* Error/Loading with Icons */
+.ordermanagement-error:before {
+  content: '⚠️ ';
+  margin-right: 6px;
+}
+.ordermanagement-loading:before {
+  content: '⏳ ';
+  margin-right: 6px;
+}
+
+/* Branding Color Touches */
+.ordermanagement-header {
+  border-bottom: 3px solid #007bff;
+  background: linear-gradient(90deg, #e3f0ff 0%, #fff 100%);
+  padding-bottom: 12px;
+}
+.btn-ordermanagement,
+.btn-ordermanagement-bulk-accept,
+.btn-ordermanagement-bulk-schedule {
+  background: linear-gradient(90deg, #007bff 60%, #1a7f37 100%);
+  color: #fff;
+}
+.btn-ordermanagement:hover,
+.btn-ordermanagement-bulk-accept:hover,
+.btn-ordermanagement-bulk-schedule:hover {
+  background: linear-gradient(90deg, #0056b3 60%, #1a7f37 100%);
+} 

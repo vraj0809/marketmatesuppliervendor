@@ -1,0 +1,97 @@
+/* Signup Page Styles */
+
+.container-signup {
+  max-width: 450px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #1e293b;
+}
+
+.signup-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #0f172a;
+}
+
+.role-toggle-signup {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.btn-role-signup {
+  padding: 0.5rem 1.2rem;
+  border: 1px solid #cbd5e1;
+  background: white;
+  color: #475569;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-role-signup:hover {
+  background: #e2e8f0;
+}
+
+.btn-role-signup.active {
+  background: linear-gradient(135deg, #475569 0%, #64748b 100%);
+  color: white;
+  border-color: #475569;
+}
+
+.form-signup {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group-signup {
+  margin-bottom: 1.25rem;
+}
+
+.label-signup {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.input-signup {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  color: #1e293b;
+  transition: border-color 0.3s ease;
+  background: white;
+}
+
+.input-signup:focus {
+  border-color: #64748b;
+  outline: none;
+}
+
+.btn-signup {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(135deg, #475569 0%, #64748b 100%);
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: 1rem;
+}
+
+.btn-signup:hover {
+  background: linear-gradient(135deg, #334155 0%, #475569 100%);
+}

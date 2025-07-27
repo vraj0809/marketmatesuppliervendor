@@ -1,0 +1,44 @@
+.header {
+  background: var(--color-primary);
+  color: #fff;
+  padding: calc(var(--spacing) * 2) calc(var(--spacing) * 3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow);
+}
+
+.header__logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.header__nav {
+  display: flex;
+  gap: calc(var(--spacing) * 2);
+}
+
+.header__user {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing);
+}
+
+.header__role {
+  color: var(--color-accent);
+  font-size: 0.9rem;
+}
+
+.header__logout {
+  background: var(--color-danger);
+  color: #fff;
+  padding: calc(var(--spacing) * 0.75) calc(var(--spacing) * 1.5);
+  border-radius: 4px;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+.header__logout:hover {
+  background: #c53030;
+} 

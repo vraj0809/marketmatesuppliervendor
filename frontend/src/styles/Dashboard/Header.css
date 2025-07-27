@@ -1,0 +1,235 @@
+/* Header.css - Landing Page Theme */
+.dashboard-header {
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  color: #374151;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-left: 280px;
+}
+
+.dashboard-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: -1;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  z-index: 2;
+}
+
+.header-logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #374151;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.header-logo::before {
+  content: '📊';
+  width: 32px;
+  height: 32px;
+  background: #6b7280;
+  color: white;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.header-logo:hover {
+  transform: scale(1.02);
+  color: #4b5563;
+}
+
+.header-title {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0;
+  color: #6b7280;
+  letter-spacing: -0.25px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  z-index: 2;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  padding: 0.75rem 1.25rem;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+.user-info:hover {
+  background: #f3f4f6;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: #d1d5db;
+}
+
+.user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #6b7280;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: white;
+  border: 2px solid #e5e7eb;
+  transition: all 0.3s ease;
+}
+
+.user-info:hover .user-avatar {
+  transform: scale(1.05);
+  background: #4b5563;
+}
+
+.user-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: -0.25px;
+  color: #374151;
+}
+
+.logout-btn {
+  background: #6b7280;
+  border: 1px solid #6b7280;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 0.9rem;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+}
+
+.logout-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.logout-btn:hover::before {
+  left: 100%;
+}
+
+.logout-btn:hover {
+  background: #4b5563;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-color: #4b5563;
+}
+
+.logout-btn:active {
+  transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .dashboard-header {
+    margin-left: 260px;
+    padding: 1rem 1.5rem;
+  }
+  
+  .header-left {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-header {
+    margin-left: 0;
+    padding: 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .header-left, .header-right {
+    flex: 1;
+    min-width: fit-content;
+  }
+  
+  .header-right {
+    justify-content: flex-end;
+  }
+  
+  .header-title {
+    font-size: 1rem;
+  }
+  
+  .user-name {
+    display: none;
+  }
+  
+  .user-info {
+    padding: 0.5rem;
+  }
+  
+  .logout-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-header {
+    padding: 0.75rem;
+  }
+  
+  .header-logo {
+    font-size: 1.25rem;
+  }
+  
+  .header-title {
+    font-size: 0.9rem;
+  }
+  
+  .header-left {
+    gap: 1rem;
+  }
+  
+  .header-right {
+    gap: 1rem;
+  }
+}
