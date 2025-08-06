@@ -813,7 +813,7 @@
 .btn-landingpage:focus,
 .nav-link-landingpage:focus,
 .footer-link-landingpage:focus {
-  outline: 2px solid #3b82f6;
+  outline: 2px solid #ffffff;
   outline-offset: 2px;
 }
 

@@ -61,7 +61,7 @@ input, select, textarea {
   border-radius: 4px;
   margin-bottom: var(--spacing);
   background: #fff;
-  color: var(--color-text);
+  color: #464646;
 }
 
 ::-webkit-scrollbar {

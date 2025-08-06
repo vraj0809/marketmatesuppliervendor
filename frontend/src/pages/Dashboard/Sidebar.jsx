@@ -24,7 +24,7 @@ const Sidebar = () => {
     // { path: '/supplier/customers', label: 'Customers', icon: '👥' },
     // { path: '/supplier/analytics', label: 'Analytics', icon: '📈' },
     // { path: '/supplier/chat', label: 'Communication', icon: '💬' },
-    // { path: '/supplier/trust-score', label: 'Trust Score', icon: '⭐' }
+    // { path: '/supplier/trust-score', label: 'Trust Score', icon: '' }
   ];
 
   const menuItems = user?.role === 'vendor' ? vendorMenuItems : supplierMenuItems;
